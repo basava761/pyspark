@@ -1,0 +1,101 @@
+SPARK SQL WINDOW FUNCTIONS – QUICK NOTES
+
+--------------------------------------------------
+BASIC SYNTAX
+--------------------------------------------------
+SQL:
+function(col) OVER (PARTITION BY col1 ORDER BY col2)
+
+PySpark:
+from pyspark.sql.window import Window
+from pyspark.sql.functions import *
+
+w = Window.partitionBy("dept").orderBy("salary")
+
+--------------------------------------------------
+RANKING FUNCTIONS
+--------------------------------------------------
+row_number()      → unique sequence
+rank()            → same rank, gaps
+dense_rank()      → same rank, no gaps
+ntile(n)          → divide into n buckets
+
+df.withColumn("rn", row_number().over(w))
+df.withColumn("rnk", rank().over(w))
+df.withColumn("dr", dense_rank().over(w))
+df.withColumn("tile", ntile(3).over(w))
+
+--------------------------------------------------
+VALUE FUNCTIONS
+--------------------------------------------------
+lag(col, n)       → previous row
+lead(col, n)      → next row
+first(col)        → first value
+last(col)         → last value
+
+df.withColumn("prev", lag("salary",1).over(w))
+df.withColumn("next", lead("salary",1).over(w))
+df.withColumn("first", first("salary").over(w))
+df.withColumn("last", last("salary").over(w))
+
+--------------------------------------------------
+AGGREGATE WINDOW FUNCTIONS
+--------------------------------------------------
+sum()             → running total
+avg()             → average
+min()             → minimum
+max()             → maximum
+
+df.withColumn("sum", sum("salary").over(w))
+df.withColumn("avg", avg("salary").over(w))
+df.withColumn("min", min("salary").over(w))
+df.withColumn("max", max("salary").over(w))
+
+--------------------------------------------------
+DISTRIBUTION FUNCTIONS
+--------------------------------------------------
+cume_dist()       → cumulative distribution
+percent_rank()    → percentile rank
+
+df.withColumn("cume", cume_dist().over(w))
+df.withColumn("pr", percent_rank().over(w))
+
+--------------------------------------------------
+WINDOW FRAME (ADVANCED)
+--------------------------------------------------
+w = Window.partitionBy("dept") \
+          .orderBy("salary") \
+          .rowsBetween(-1, 1)
+
+-1 → previous row
+ 0 → current row
++1 → next row
+
+--------------------------------------------------
+KEY CONCEPTS
+--------------------------------------------------
+partitionBy → grouping (no row collapse)
+orderBy     → sorting within group
+window      → operates row-wise
+
+--------------------------------------------------
+INTERVIEW QUICK POINTS
+--------------------------------------------------
+row_number → unique ranking
+rank       → gaps in ranking
+dense_rank → no gaps
+lag/lead   → previous/next row
+sum over   → running total
+
+--------------------------------------------------
+COMMON USE CASES
+--------------------------------------------------
+Top N per group
+Duplicate removal
+Running totals
+Previous/next comparison
+Ranking within department
+
+--------------------------------------------------
+END
+--------------------------------------------------
