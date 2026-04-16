@@ -117,3 +117,10 @@ c.show()
 #|     4|   D|     40|     30|  Finance|
 #|     4|   D|     40|     50|    Admin|
 #+------+----+-------+-------+---------+
+
+#anti_joins:
+df1.join(df2,'dept_id','left_anti').select('emp_id','name','dept_id').show()
+
+
+print("===========full outer===========")
+df1.join(df2,'dept_id','outer').select('emp_id','name','dept_id','dept_name').show()
