@@ -1,0 +1,55 @@
++------+------+----------+------+---+---------+
+|emp_id|  name|department|salary|age|     city|
++------+------+----------+------+---+---------+
+|     1|Basava|        IT| 50000| 28|Bangalore|
+|     2|  Ravi|        HR| 40000| 30|Hyderabad|
+|     3|  Ajay|        IT| 60000| 26|  Chennai|
+|     4| Kiran|   Finance| 45000| 35|   Mumbai|
+|     5|  Neha|        IT| 70000| 29|Bangalore|
+|     6| Priya|        HR| 38000| 32|    Delhi|
+|     7|  Arun|   Finance| 52000| 31|     Pune|
+|     8|  John|        IT| 80000| 27|  Chennai|
+|     9| David|     Sales| 30000| 25|Hyderabad|
+|    10| Meena|     Sales| 35000| 24|   Mumbai|
+|    10| Meena|     Sales| 35000| 24|   Mumbai|
++------+------+----------+------+---+---------+
+
++----------+--------------+
+|department|dept_full_name|
++----------+--------------+
+|        IT|    Technology|
+|        HR|Human Resource|
+|   Finance|      Accounts|
+|     Sales|     Marketing|
++----------+--------------+
+
++------+------+----------+------+----+---------+
+|emp_id|  name|department|salary| age|     city|
++------+------+----------+------+----+---------+
+|    11|  NULL|        IT|  NULL|  30|Bangalore|
+|    12|Rakesh|      NULL| 45000|NULL|     Pune|
++------+------+----------+------+----+---------+
+
++------+-----+----------+------+---+------+
+|emp_id| name|department|salary|age|  city|
++------+-----+----------+------+---+------+
+|    13|Rahul|        IT| 65000| 29| Delhi|
+|    14|Sneha|        HR| 42000| 31|Mumbai|
++------+-----+----------+------+---+------+
+
++------+---+------+---------+
+|  name|age|salary|     city|
++------+---+------+---------+
+|Basava| 28| 50000|Bangalore|
+|  Ravi| 30| 40000|Hyderabad|
+|  Ajay| 26| 60000|  Chennai|
+| Kiran| 35| 45000|   Mumbai|
+|  Neha| 29| 70000|Bangalore|
+| Priya| 32| 38000|    Delhi|
+|  Arun| 31| 52000|     Pune|
+|  John| 27| 80000|  Chennai|
+| David| 25| 30000|Hyderabad|
+| Meena| 24| 35000|   Mumbai|
+| Meena| 24| 35000|   Mumbai|
++------+---+------+---------+
+

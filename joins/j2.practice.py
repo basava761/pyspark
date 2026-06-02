@@ -46,9 +46,9 @@ from pyspark.sql.functions import coalesce, lit
 df2_clean = df2.dropDuplicates(["dept_id"])
 
 df1.join(df2_clean, "dept_id", "left") \
-   .select(
-       coalesce("dept_name", lit("Unknown")).alias("dept_name")
-   ) \
-   .groupBy("dept_name") \
-   .count() \
-   .show()
+.select(
+    coalesce("dept_name", lit("Unknown")).alias("dept_name")
+) \
+.groupBy("dept_name") \
+.count() \
+.show()
