@@ -120,7 +120,8 @@ c.show()
 
 #anti_joins:
 df1.join(df2,'dept_id','left_anti').select('emp_id','name','dept_id').show()
-
+res=df1.join(df2,'dept_id','left_anti').select('emp_id','name','dept_id')
+res.explain(True)
 
 print("===========full outer===========")
 df1.join(df2,'dept_id','outer').select('emp_id','name','dept_id','dept_name').show()
