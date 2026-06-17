@@ -1,0 +1,47 @@
+broadcast threshould=10mb
+
+spark.sql.autobroadcastjointhreshould,10 mb
+
+spark is unified and open-source computeengine for parallel data processing with multi language libraries
+unified=['batch processing',[strem processing]'mc learning']
+
+deployment modes in spark
+
+Deployment mode determines where the Spark Driver runs. Local mode runs everything on a single machine, Client mode runs the driver on the submitting machine, and Cluster mode runs the driver inside the cluster while executors run on worker nodes.
+
+Local Mode
+Driver runs on local machine.
+Executors run on local machine.
+No cluster required.
+Used for learning, development, testing.
+Limited by local CPU, RAM, and disk.
+Easy debugging and log access.
+Not suitable for large-scale processing.
+
+Client Mode
+Driver runs on the machine submitting the job.
+Executors run on cluster worker nodes.
+Cluster required.
+Used for development and debugging on a cluster.
+Driver logs are visible on the client machine.
+Client machine must remain reachable/alive.
+Network communication happens between driver and executors.
+If client machine crashes, job may fail.
+
+Cluster Mode
+Driver runs inside the cluster.
+Executors run inside the cluster.
+Cluster required.
+Most commonly used in production.
+Client can disconnect after job submission.
+Better fault tolerance and reliability.
+Scales well for large workloads.
+Driver logs are accessed through Spark/YARN/Dataproc UI.
+Preferred for Airflow, Dataproc, EMR, and production ETL pipeline
+
+nterview Points
+Catalog stores metadata, not actual data.
+Temporary views are registered in Spark Catalog.
+Managed tables and databases are tracked through the Catalog.
+Spark SQL uses Catalog to resolve table names.
+Similar to Hive Metastore when Spark is integrated with Hive.

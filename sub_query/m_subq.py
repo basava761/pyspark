@@ -63,5 +63,14 @@ avg_sal = emp_df.agg(avg("salary")).collect()[0][0]
 
 #Find all employees whose salary is greater than Tom's salary.
 #mysql> select emp_name,salary from employees where salary>(select salary from employees where emp_name='john');
-sal=emp_df.filter(col('salary') & col('ename')=='Tom')
-emp_df.select('emp_name','salary').filter(col('salary')>sal).show()
+print('printing johns salary')
+sal = emp_df.filter(
+    col("emp_name") == "John"
+).select("salary").first()[0]
+
+emp_df.select(
+    "emp_name",
+    "salary"
+).filter(
+    col("salary") > sal
+).show()
